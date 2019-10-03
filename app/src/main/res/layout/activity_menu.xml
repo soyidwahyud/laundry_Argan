@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -35,64 +35,67 @@ xmlns:tools="http://schemas.android.com/tools"
         app:layout_constraintVertical_bias="0.008" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/cm"
         android:layout_width="153dp"
         android:layout_height="47dp"
-        android:layout_marginBottom="348dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/white"
         android:text="Data Cuci Masuk"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/transaksi"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/transaksi"
         android:layout_width="158dp"
         android:layout_height="49dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginBottom="20dp"
         android:background="@android:color/white"
-        android:text="Cetak Struk"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
-        app:layout_constraintVertical_bias="0.035" />
-
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="158dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="28dp"
         android:text="Data Transaksi"
-        android:background="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/laporan"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.509"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/laporan"
         android:layout_width="158dp"
         android:layout_height="49dp"
-        android:layout_marginTop="28dp"
-        android:text="Laporan"
+        android:layout_marginBottom="24dp"
         android:background="@android:color/white"
+        android:text="Laporan"
+        app:layout_constraintBottom_toTopOf="@+id/exit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="56dp"
         android:background="#D81B60"
         android:text="Exit"
+        android:onClick="keluar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/pelanggan"
+        android:layout_width="152dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="48dp"
+        android:background="@android:color/white"
+        android:onClick="clickdapel"
+        android:text="Data Pelanggan"
+        app:layout_constraintBottom_toTopOf="@+id/cm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.367" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

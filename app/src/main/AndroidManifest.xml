@@ -12,19 +12,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".tampilan.DataCuciMasuk"></activity>
-        <activity android:name=".tampilan.DataPelanggan" />
-        <activity
-            android:name=".CuciMasuk"
-            android:label="@string/title_activity_cuci_masuk"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".tampilan.menu"></activity>
+        <activity android:name=".tampilan.Argan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".tampilan.DataCuciMasuk" />
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
