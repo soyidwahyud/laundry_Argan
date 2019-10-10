@@ -1,18 +1,25 @@
 package com.example.laundryargan;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.laundryargan.model_class.RequestHandler;
+import com.example.laundryargan.model_class.pelanggan;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,6 +29,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.HashMap;
 
 import static android.view.View.GONE;
@@ -35,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
     Button tambah;
     boolean isUpdating = false;
+
+    List<pelanggan> pelangganList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,6 +146,83 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
-
-
+    private void readHeroes() {
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.url_read_pelanggan, null, CODE_GET_REQUEST);
+        request.execute();
     }
+    private void refreshHeroList(JSONArray heroes) throws JSONException {
+        //clearing previous heroes
+        pelangganList.clear();
+
+        //traversing through all the items in the json array
+        //the json we got from the response
+        for (int i = 0; i < heroes.length(); i++) {
+            //getting each hero object
+            JSONObject obj = heroes.getJSONObject(i);
+
+            //adding the hero to the list
+            pelangganList.add(new pelanggan(
+                    obj.getInt("id"),
+                    obj.getString("name"),
+                    obj.getString("no telp")
+            ));
+        }
+
+        //creating the adapter and setting it to the listview
+        PelangganAdapter adapter = new PelangganAdapter(pelangganList);
+        listView.setAdapter(adapter);
+    }
+
+    private void deletePelanggan(int id) {
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.url_delete_pelanggan + id, null, CODE_GET_REQUEST);
+        request.execute();
+    }
+
+    class PelangganAdapter extends ArrayAdapter<pelanggan>{
+        List<pelanggan> pelangganList;
+
+        public PelangganAdapter(List<pelanggan>pelangganList){
+            super(MainActivity.this, R.layout.layout_pelanggan_list, MainActivity.this.pelangganList);
+            this.pelangganList = this.pelangganList;
+        }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            LayoutInflater inflater = getLayoutInflater();
+            View listViewItem = inflater.inflate(R.layout.layout_pelanggan_list, null, true);
+
+            TextView textViewName = listViewItem.findViewById(R.id.textViewName);
+
+            TextView textViewUpdate = listViewItem.findViewById(R.id.textViewUpdate);
+            TextView textViewDelete = listViewItem.findViewById(R.id.textViewDelete);
+
+            final pelanggan p = pelangganList.get(position);
+
+            textViewName.setText(p.getNama_pelanggan());
+
+            textViewDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+                    builder.setTitle("Delete " + p.getNama_pelanggan())
+                            .setMessage("Are you sure you want to delete it?")
+                            .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    deletePelanggan(p.getIdpelanggan());
+                                }
+                            })
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            })
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            .show();
+
+                }
+            });
+            return listViewItem;
+        }
+    }
+}

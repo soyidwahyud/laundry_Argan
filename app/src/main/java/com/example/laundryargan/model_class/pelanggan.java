@@ -1,7 +1,7 @@
 package com.example.laundryargan.model_class;
 
 import java.io.Serializable;
-class pelanggan {
+public class pelanggan {
     private int idpelanggan;
     private String nama_pelanggan, no_hp;
 
