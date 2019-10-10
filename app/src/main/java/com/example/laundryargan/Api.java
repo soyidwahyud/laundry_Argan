@@ -1,7 +1,7 @@
 package com.example.laundryargan;
 
 public class Api {
-    private static final String root_url = "http://192.168.4.2/ArganApi/v1/Api.php?apicall=";
+    private static final String root_url = "http://192.168.4.2:8080/ArganApi/v1/Api.php?apicall=";
 
     public static final String url_create_pelanggan = root_url +"createpelanggan";
     public static final String url_create_jenis_barang = root_url +"createJbarang";
