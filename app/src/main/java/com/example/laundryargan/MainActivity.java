@@ -3,9 +3,16 @@ package com.example.laundryargan;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.example.laundryargan.model_class.RequestHandler;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,70 +22,118 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.HashMap;
+
+import static android.view.View.GONE;
 
 public class MainActivity extends AppCompatActivity {
 
     ListView listView;
+    private static final int CODE_GET_REQUEST = 1024;
+    private static final int CODE_POST_REQUEST = 1025;
+    EditText nama, telp,id;
+    ProgressBar progressBar;
+    Button tambah;
+    boolean isUpdating = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        nama = (EditText)findViewById(R.id.nama);
+        telp = (EditText)findViewById(R.id.telp);
+        id = (EditText)findViewById(R.id.id);
+        tambah = (Button)findViewById(R.id.tambah);
         listView = (ListView) findViewById(R.id.listView);
-        downloadJSON("http://localhost:8080/laundry/getData.php");
-    }
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
-
-    private void downloadJSON(final String urlWebService) {
-
-        class DownloadJSON extends AsyncTask<Void, Void, String> {
-
+        tambah.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected void onPreExecute() {
-                super.onPreExecute();
-            }
+            public void onClick(View view) {
+                if(isUpdating){
 
-
-            @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
-                Toast.makeText(getApplicationContext(), s, Toast.LENGTH_SHORT).show();
-                try {
-                    loadIntoListView(s);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                }
+                else{
+                    createPelanggan();
                 }
             }
+        });
+    }
 
-            @Override
-            protected String doInBackground(Void... voids) {
-                try {
-                    URL url = new URL(urlWebService);
-                    HttpURLConnection con = (HttpURLConnection) url.openConnection();
-                    StringBuilder sb = new StringBuilder();
-                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String json;
-                    while ((json = bufferedReader.readLine()) != null) {
-                        sb.append(json + "\n");
-                    }
-                    return sb.toString().trim();
-                } catch (Exception e) {
-                    return null;
+    private void createPelanggan() {
+        String name = nama.getText().toString().trim();
+        String notelp = telp.getText().toString().trim();
+
+
+        if(TextUtils.isEmpty(name)){
+            nama.setError("masukkan nama");
+            nama.requestFocus();
+            return;
+        }
+
+        if(TextUtils.isEmpty(notelp)){
+            nama.setError("masukkan no telp");
+            nama.requestFocus();
+            return;
+        }
+        HashMap<String, String>params = new HashMap<>();
+
+        params.put("nama", String.valueOf(nama));
+        params.put("notelp", String.valueOf(telp));
+
+        PerformNetworkRequest request = new PerformNetworkRequest(Api.url_create_pelanggan,params,CODE_POST_REQUEST);
+        request.execute();
+    }
+
+        private class PerformNetworkRequest extends AsyncTask<Void, Void, String> {
+        String url;
+        HashMap<String, String> params;
+
+        int requestCode;
+
+        //constructor to initialize values
+        PerformNetworkRequest(String url, HashMap<String, String> params, int requestCode) {
+            this.url = url;
+            this.params = params;
+            this.requestCode = requestCode;
+        }
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressBar.setVisibility(View.VISIBLE);
+        }
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+            progressBar.setVisibility(GONE);
+            try {
+                JSONObject object = new JSONObject(s);
+                if (!object.getBoolean("error")) {
+                    Toast.makeText(getApplicationContext(), object.getString("message"), Toast.LENGTH_SHORT).show();
+                    //refreshing the herolist after every operation
+                    //so we get an updated list
+                    //we will create this method right now it is commented
+                    //because we haven't created it yet
+                    //refreshHeroList(object.getJSONArray("heroes"));
                 }
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
         }
-        DownloadJSON getJSON = new DownloadJSON();
-        getJSON.execute();
+        @Override
+        protected String doInBackground(Void... voids) {
+            RequestHandler requestHandler = new RequestHandler();
+
+            if (requestCode == CODE_POST_REQUEST)
+                return requestHandler.sendPostRequest(url, params);
+
+
+            if (requestCode == CODE_GET_REQUEST)
+                return requestHandler.sendGetRequest(url);
+
+            return null;
+        }
     }
 
-    private void loadIntoListView(String json) throws JSONException {
-        JSONArray jsonArray = new JSONArray(json);
-        String[] stocks = new String[jsonArray.length()];
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject obj = jsonArray.getJSONObject(i);
-            stocks[i] = obj.getString("nama") + " " + obj.getString("No Hp");
-        }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, stocks);
-        listView.setAdapter(arrayAdapter);
+
     }
-}
