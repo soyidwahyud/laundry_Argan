@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     private static final int CODE_GET_REQUEST = 1024;
     private static final int CODE_POST_REQUEST = 1025;
-    EditText nama, telp,id;
+    EditText nama, telp,id, alamat;
     ProgressBar progressBar;
     Button tambah;
     boolean isUpdating = false;
@@ -56,8 +56,11 @@ public class MainActivity extends AppCompatActivity {
         telp = (EditText)findViewById(R.id.telp);
         id = (EditText)findViewById(R.id.id);
         tambah = (Button)findViewById(R.id.tambah);
-        listView = (ListView) findViewById(R.id.listView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        listView = (ListView) findViewById(R.id.listView);
+        alamat = (EditText)findViewById(R.id.alamaat);
+
+        pelangganList = new ArrayList<>();
 
         tambah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
     private void createPelanggan() {
         String name = nama.getText().toString().trim();
         String notelp = telp.getText().toString().trim();
-
+        String nalamat = alamat.getText().toString();
 
         if(TextUtils.isEmpty(name)){
             nama.setError("masukkan nama");
@@ -88,10 +91,16 @@ public class MainActivity extends AppCompatActivity {
             nama.requestFocus();
             return;
         }
+        if(TextUtils.isEmpty(nalamat)){
+            nama.setError("masukkan Alamat");
+            nama.requestFocus();
+            return;
+        }
         HashMap<String, String>params = new HashMap<>();
 
         params.put("nama", String.valueOf(nama));
         params.put("notelp", String.valueOf(telp));
+        params.put("alamat", String.valueOf(alamat));
 
         PerformNetworkRequest request = new PerformNetworkRequest(Api.url_create_pelanggan,params,CODE_POST_REQUEST);
         request.execute();
@@ -150,20 +159,21 @@ public class MainActivity extends AppCompatActivity {
         PerformNetworkRequest request = new PerformNetworkRequest(Api.url_read_pelanggan, null, CODE_GET_REQUEST);
         request.execute();
     }
-    private void refreshHeroList(JSONArray heroes) throws JSONException {
+    private void refreshPelanggan(JSONArray pelanggan) throws JSONException {
         //clearing previous heroes
         pelangganList.clear();
 
         //traversing through all the items in the json array
         //the json we got from the response
-        for (int i = 0; i < heroes.length(); i++) {
+        for (int i = 0; i < pelanggan.length(); i++) {
             //getting each hero object
-            JSONObject obj = heroes.getJSONObject(i);
+            JSONObject obj = pelanggan.getJSONObject(i);
 
             //adding the hero to the list
             pelangganList.add(new pelanggan(
                     obj.getInt("id"),
                     obj.getString("name"),
+                    obj.getString("alamat"),
                     obj.getString("no telp")
             ));
         }
