@@ -41,6 +41,7 @@
         android:layout_marginBottom="20dp"
         android:background="@android:color/white"
         android:text="Data Cuci Masuk"
+        android:onClick="datCuci"
         app:layout_constraintBottom_toTopOf="@+id/transaksi"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
