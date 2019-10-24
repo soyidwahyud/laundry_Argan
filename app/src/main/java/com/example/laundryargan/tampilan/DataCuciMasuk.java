@@ -16,6 +16,7 @@ public class DataCuciMasuk extends AppCompatActivity {
     }
 
     public void buttonHitungData(View view) {
+
     }
 
     public void buttonSave(View view) {
