@@ -28,4 +28,14 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
     implementation 'com.google.android.material:material:1.0.0'
+
+    implementation 'com.android.support:design:26.1.0'
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    //BindView
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+//Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+//GSON Converter
+    implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 }
