@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void createPelanggan() {
+
         String name = nama.getText().toString().trim();
         String notelp = telp.getText().toString().trim();
         String nalamat = alamat.getText().toString();
