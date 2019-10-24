@@ -30,4 +30,10 @@ public class menu extends AppCompatActivity {
         Intent intent = new Intent(this, DataCuciMasuk.class);
         startActivity(intent);
     }
+
+    public void lap(View view) {
+        Intent intent = new Intent(this, Laporan.class);
+        startActivity(intent);
+
+    }
 }

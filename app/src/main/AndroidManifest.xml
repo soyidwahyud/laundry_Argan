@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".tampilan.menu"></activity>
+        <activity android:name=".tampilan.Laporan"></activity>
+        <activity android:name=".tampilan.menu" />
         <activity android:name=".tampilan.Argan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".tampilan.DataCuciMasuk" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

@@ -48,9 +48,8 @@
 
             <EditText
                 android:id="@+id/input_no_hp"
-                android:layout_width="334dp"
-                android:layout_height="56dp"
-                android:layout_marginStart="12dp"
+                android:layout_width="335dp"
+                android:layout_height="55dp"
                 android:ems="10"
                 android:hint="Masukan Nomor HP"
                 android:numeric="integer" />
