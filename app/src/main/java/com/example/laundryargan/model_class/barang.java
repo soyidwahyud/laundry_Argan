@@ -4,21 +4,17 @@ import java.sql.ResultSet;
 
 class barang {
 
-    private int idbarang, jumlah, pdalam;
-    private double beratbaju;
-    private jenis_barang  jb = new jenis_barang();
+    private int idbarang, harga;
+    private String namabarang;
 
-    public barang()
-    {
-
+    public barang(int idbarang, int harga, String namabarang) {
+        this.idbarang = idbarang;
+        this.harga = harga;
+        this.namabarang = namabarang;
     }
 
-    public barang(int idbarang, int jumlah, int pdalam, double beratbaju, jenis_barang jb) {
-        this.idbarang = idbarang;
-        this.jumlah = jumlah;
-        this.pdalam = pdalam;
-        this.beratbaju = beratbaju;
-        this.jb = jb;
+    public barang() {
+
     }
 
     public int getIdbarang() {
@@ -29,35 +25,19 @@ class barang {
         this.idbarang = idbarang;
     }
 
-    public int getJumlah() {
-        return jumlah;
+    public int getHarga() {
+        return harga;
     }
 
-    public void setJumlah(int jumlah) {
-        this.jumlah = jumlah;
+    public void setHarga(int harga) {
+        this.harga = harga;
     }
 
-    public int getPdalam() {
-        return pdalam;
+    public String getNamabarang() {
+        return namabarang;
     }
 
-    public void setPdalam(int pdalam) {
-        this.pdalam = pdalam;
-    }
-
-    public double getBeratbaju() {
-        return beratbaju;
-    }
-
-    public void setBeratbaju(double beratbaju) {
-        this.beratbaju = beratbaju;
-    }
-
-    public jenis_barang getJb() {
-        return jb;
-    }
-
-    public void setJb(jenis_barang jb) {
-        this.jb = jb;
+    public void setNamabarang(String namabarang) {
+        this.namabarang = namabarang;
     }
 }

@@ -3,12 +3,24 @@ package com.example.laundryargan.model_class;
 import java.io.Serializable;
 public class pelanggan {
     private int idpelanggan;
-    private String nama_pelanggan, no_hp;
+    private String nama_pelanggan;
+    private String no_hp;
 
-    public pelanggan(int idpelanggan, String nama_pelanggan, String no_hp) {
+    public String getAlamat() {
+        return alamat;
+    }
+
+    public void setAlamat(String alamat) {
+        this.alamat = alamat;
+    }
+
+    private String alamat;
+
+    public pelanggan(int idpelanggan, String nama_pelanggan, String no_hp, String alamat) {
         this.idpelanggan = idpelanggan;
         this.nama_pelanggan = nama_pelanggan;
         this.no_hp = no_hp;
+        this.alamat = alamat;
     }
     public pelanggan(){
 
