@@ -1,4 +1,4 @@
-package com.example.laundryargan.tampilan;
+package com.example.laundryargan.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.laundryargan.R;
 
-public class Datatransaksi extends AppCompatActivity {
+public class PelangganActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_datatransaksi);
+        setContentView(R.layout.activity_pelanggan);
     }
 }
