@@ -3,39 +3,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="20dp">
 
 
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_weight="8"
-        android:text="Pelanggan"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+    <ListView
+        android:id="@+id/lv_pelanggan_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-
-    <TextView
-        android:textStyle="bold"
-        android:id="@+id/textViewUpdate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textViewDelete"
-        android:layout_toLeftOf="@+id/textViewDelete"
-        android:layout_toStartOf="@+id/textViewDelete"
-        android:padding="5dp"
-        android:text="Update"
-        android:textColor="#498C1A" />
-
-    <TextView
-        android:textStyle="bold"
-        android:id="@+id/textViewDelete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:padding="5dp"
-        android:text="Delete"
-        android:textColor="#C20A10" />
+    </ListView>
 
 </RelativeLayout>

@@ -18,7 +18,7 @@ public class menu extends AppCompatActivity {
     }
 
     public void clickdapel(View view) {
-        Intent intent =  new Intent(this, MainActivity.class);
+        Intent intent =  new Intent(this, pelangganActivity.class);
         startActivity(intent);
     }
 

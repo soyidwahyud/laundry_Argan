@@ -180,8 +180,8 @@ public class MainActivity extends AppCompatActivity {
         }
 
         //creating the adapter and setting it to the listview
-        PelangganAdapter adapter = new PelangganAdapter(pelangganList);
-        listView.setAdapter(adapter);
+       // PelangganAdapter adapter = new PelangganAdapter(pelangganList);
+        //listView.setAdapter(adapter);
     }
 
     private void deletePelanggan(int id) {
@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         request.execute();
     }
 
-    class PelangganAdapter extends ArrayAdapter<pelanggan>{
+    /*class PelangganAdapter extends ArrayAdapter<pelanggan>{
         List<pelanggan> pelangganList;
 
         public PelangganAdapter(List<pelanggan>pelangganList){
@@ -235,5 +235,5 @@ public class MainActivity extends AppCompatActivity {
             });
             return listViewItem;
         }
-    }
+    }*/
 }
