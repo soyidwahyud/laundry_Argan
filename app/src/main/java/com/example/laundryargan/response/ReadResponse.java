@@ -2,6 +2,8 @@
 package com.example.laundryargan.response;
 
 import java.util.List;
+
+import com.example.laundryargan.model_class.pelanggan;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -13,6 +15,15 @@ public class ReadResponse {
     @SerializedName("laundry")
     @Expose
     private List<Laundry> laundry = null;
+    private List<pelanggan> pelanggans = null;
+
+    public List<pelanggan> getPelanggans() {
+        return pelanggans;
+    }
+
+    public void setPelanggans(List<pelanggan> pelanggans) {
+        this.pelanggans = pelanggans;
+    }
 
     public Boolean getStatus() {
         return status;

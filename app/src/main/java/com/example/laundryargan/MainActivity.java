@@ -52,14 +52,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        nama = (EditText)findViewById(R.id.nama);
-        telp = (EditText)findViewById(R.id.telp);
+        //nama = (EditText)findViewById(R.id.nama);
+        /*telp = (EditText)findViewById(R.id.telp);
         id = (EditText)findViewById(R.id.id);
         tambah = (Button)findViewById(R.id.tambah);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         listView = (ListView) findViewById(R.id.listView);
         alamat = (EditText)findViewById(R.id.alamaat);
-
+        */
         pelangganList = new ArrayList<>();
 
         tambah.setOnClickListener(new View.OnClickListener() {
