@@ -12,17 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-<<<<<<< HEAD
-        <activity android:name=".tampilan.pelangganview"></activity>
+        <activity android:name=".tampilan.datacuciview"></activity>
+        <activity android:name=".tampilan.DataCuciActivity" />
+        <activity android:name=".tampilan.pelangganview" />
         <activity android:name=".tampilan.Login" />
         <activity android:name=".activities.PelangganActivity" />
         <activity
             android:name=".tampilan.menu"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-=======
-        <activity android:name=".tampilan.Laporan"></activity>
-        <activity android:name=".tampilan.menu" />
->>>>>>> origin/master
+        <activity android:name=".tampilan.Laporan" />
         <activity android:name=".tampilan.Argan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,6 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".tampilan.DataCuciMasuk" />
+        <activity android:name=".tampilan.pelangganActivity" />
         <activity android:name=".MainActivity" />
     </application>
 

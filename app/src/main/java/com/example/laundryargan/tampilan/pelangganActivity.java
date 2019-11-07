@@ -60,7 +60,7 @@ public class pelangganActivity extends AppCompatActivity implements View.OnClick
         TextView viewHeadernotelp = new TextView(this);
         TextView viewHeaderAction = new TextView(this);
 
-        viewHeaderId.setText("ID");
+        viewHeaderId.setText("id");
         viewHeaderNama.setText("Nama");
         viewHeaderAlamat.setText("Alamat");
         viewHeadernotelp.setText("Nomor Telfon");
@@ -87,15 +87,15 @@ public class pelangganActivity extends AppCompatActivity implements View.OnClick
             arrayBiodata = new JSONArray(p.tampilPelanggan());
             for (int i = 0; i < arrayBiodata.length(); i++) {
                 JSONObject jsonChildNode = arrayBiodata.getJSONObject(i);
+                String id = jsonChildNode.optString("id");
                 String nama = jsonChildNode.optString("nama");
                 String alamat = jsonChildNode.optString("alamat");
                 String notelp = jsonChildNode.optString("notelp");
-                String id = jsonChildNode.optString("id");
 
+                System.out.println("ID           : " + id);
                 System.out.println("Nama         : " + nama );
                 System.out.println("Alamat       : " + alamat);
                 System.out.println("Nomor Telfon : " + notelp);
-                System.out.println("ID           : " + id);
 
                 barisTabel = new TableRow(this);
 
@@ -126,7 +126,7 @@ public class pelangganActivity extends AppCompatActivity implements View.OnClick
 
                 // Menambahkan button Edit
                 buttonEdit.add(i, new Button(this));
-                buttonEdit.get(i).setId(Integer.parseInt(id));
+                //buttonEdit.get(i).setId(Integer.parseInt(id));
                 buttonEdit.get(i).setTag("Edit");
                 buttonEdit.get(i).setText("Edit");
                 buttonEdit.get(i).setOnClickListener(this);
@@ -134,7 +134,7 @@ public class pelangganActivity extends AppCompatActivity implements View.OnClick
 
                 // Menambahkan tombol Delete
                 buttonDelete.add(i, new Button(this));
-                buttonDelete.get(i).setId(Integer.parseInt(id));
+                //buttonDelete.get(i).setId(Integer.parseInt(id));
                 buttonDelete.get(i).setTag("Delete");
                 buttonDelete.get(i).setText("Delete");
                 buttonDelete.get(i).setOnClickListener(this);
@@ -200,8 +200,6 @@ public class pelangganActivity extends AppCompatActivity implements View.OnClick
         viewId.setText(String.valueOf(id));
         viewId.setTextColor(Color.TRANSPARENT);
         layoutInput.addView(viewId);
-
-
 
         final EditText editNama = new EditText(this);
         editNama.setText(namaEdit);
