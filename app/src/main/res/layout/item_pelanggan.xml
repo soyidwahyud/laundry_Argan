@@ -47,7 +47,4 @@
                 android:textStyle="bold" />
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-
-
-
 </FrameLayout>
