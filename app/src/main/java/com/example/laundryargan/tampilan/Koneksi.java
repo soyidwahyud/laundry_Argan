@@ -12,7 +12,7 @@ import java.net.URLConnection;
 public class Koneksi {
     // Mendapatkan nilai bit yang diperlukan
     public String call(String url) {
-        int BUFFER_SIZE = 8000;
+        int BUFFER_SIZE = 2000;
         InputStream in = null;
         try {
             in = OpenHttpConnection(url);

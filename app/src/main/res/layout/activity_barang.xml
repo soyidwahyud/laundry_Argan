@@ -2,19 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/p"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".activities.PelangganActivity">
+    tools:context=".tampilan.BarangActivity">
 
     <Button
-        android:id="@+id/buttonTambahPelanggan"
+        android:id="@+id/buttonTambahBarang"
         android:layout_width="186dp"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:text="Tambah Pelanggan" />
+        android:text="Tambah Barang" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
@@ -27,12 +26,11 @@
             android:layout_height="wrap_content">
 
             <TableLayout
-                android:id="@+id/tablePelanggan"
+                android:id="@+id/tableBarang"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"></TableLayout>
         </ScrollView>
     </HorizontalScrollView>
-
 
 </LinearLayout>

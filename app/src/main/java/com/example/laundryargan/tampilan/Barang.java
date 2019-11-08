@@ -1,13 +1,13 @@
 package com.example.laundryargan.tampilan;
 
-public class PelangganActivity2 extends Koneksi {
-    String URL = "http://192.168.10.251/proyek/server.php";
+public class Barang extends Koneksi{
+    String URL = "http://192.168.10.251/proyek/server2.php";
     String url = "";
     String response = "";
 
-    public String tampilPelanggan() {
+    public String tampilBarang() {
         try {
-            url = URL + "?operasi=view";
+            url = URL + "?operasi=viewBarang";
             System.out.println("URL Tampil Biodata : " + url);
             response = call(url);
         }
@@ -15,9 +15,9 @@ public class PelangganActivity2 extends Koneksi {
         }
         return response;
     }
-    public String insertPelanggan(String nama, String alamat, String notelp) {
+    public String insertBarang(String namabarang, String harga) {
         try {
-            url = URL + "?operasi=insertPelanggan&nama_pelanggan=" + nama + "&alamat=" + alamat + "&notelp=" + notelp;
+            url = URL + "?operasi=insertBarang&namabarang=" + namabarang + "&harga=" + harga;
             System.out.println("URL Insert Pelanggan : " + url);
             response = call(url);
         }
@@ -27,7 +27,7 @@ public class PelangganActivity2 extends Koneksi {
     }
     public String getBiodataById (int id) {
         try {
-            url = URL + "?operasi=get_pelanggan_by_id&idpelanggan=" + id;
+            url = URL + "?operasi=get_barang_by_id&idbarang=" + id;
             System.out.println("URL Insert Pelanggan : " + url);
             response = call(url);
         }
@@ -35,9 +35,9 @@ public class PelangganActivity2 extends Koneksi {
         }
         return response;
     }
-    public String updateBiodata (String id, String nama, String alamat,String notelp) {
+    public String updateBarang (String id, String nama, String harga) {
         try {
-            url = URL + "?operasi=updatePelanggan&idpelanggan=" + id + "&nama_pelanggan=" + nama + "&alamat=" + alamat+ "&notelp="+ notelp;
+            url = URL + "?operasi=updateBarang&idbarang=" + id + "&namabarang=" + nama + "&harga=" + harga;
             System.out.println("URL Insert Pelanggan : " + url);
             response = call(url);
         }
@@ -45,9 +45,9 @@ public class PelangganActivity2 extends Koneksi {
         }
         return response;
     }
-    public String deleteBiodata (int id) {
+    public String deleteBarang (int id) {
         try {
-            url = URL + "?operasi=deletePelanggan&idpelanggan=" + id;
+            url = URL + "?operasi=deleteBarang&idbarang=" + id;
             System.out.println("URL Insert Biodata : " + url);
             response = call(url);
         }
