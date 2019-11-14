@@ -33,7 +33,7 @@
                 android:id="@+id/tv_tanggal_masuk"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:date="Tanggal Masuk :"
+                android:text="Tanggal Masuk :"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -41,7 +41,7 @@
                 android:id="@+id/tv_tanggal_selesai"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:date="Tanggal Selesai :"
+                android:text="Tanggal Selesai :"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 

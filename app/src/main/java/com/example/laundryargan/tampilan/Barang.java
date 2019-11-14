@@ -1,7 +1,7 @@
 package com.example.laundryargan.tampilan;
 
 public class Barang extends Koneksi{
-    String URL = "http://192.168.10.251/proyek/server2.php";
+    String URL = "http://192.168.65.93/proyek/server2.php";
     String url = "";
     String response = "";
 

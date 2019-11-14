@@ -51,7 +51,7 @@ public class pelangganActivity extends AppCompatActivity implements View.OnClick
 
         // Menambahkan baris untuk tabel
         TableRow barisTabel = new TableRow(this);
-        barisTabel.setBackgroundColor(Color.CYAN);
+        barisTabel.setBackgroundColor(Color.WHITE);
 
         // Menambahkan tampilan teks untuk judul pada tabel
         TextView viewHeaderidpelanggan = new TextView(this);

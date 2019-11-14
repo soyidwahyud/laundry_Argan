@@ -69,6 +69,10 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
         viewHeadernama_barang.setPadding(5, 1, 6, 1);
         viewHeaderharga.setPadding(5, 1, 6, 1);
         viewHeaderAction.setPadding(5, 1, 6, 1);
+
+        barisTabel.addView(viewHeaderidbarang);
+        barisTabel.addView(viewHeadernama_barang);
+        barisTabel.addView(viewHeaderharga);
         barisTabel.addView(viewHeaderAction);
 
         // Menyusun ukuran dari tabel

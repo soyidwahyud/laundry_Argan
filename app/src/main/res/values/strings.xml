@@ -98,5 +98,8 @@
 <resources>
     <string name="app_name">Argan Laundry</string>
     <string name="logo_text">Argan Laundry</string>
+    <string name="hint_password">Password</string>
+    <string name="btn_sign_up">Daftar</string>
+    <string name="btn_link_login">Sudah Memiliki Akun? Login disini </string>
 
 </resources>

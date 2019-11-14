@@ -45,4 +45,18 @@ public class menu extends AppCompatActivity {
         Intent intent = new Intent(this, BarangActivity.class);
         startActivity(intent);
     }
+
+    public void HeaderClick(View view) {
+        Intent intent = new Intent(this, HeaderActivity.class);
+        startActivity(intent);
+    }
+
+    public void UserClick(View view) {
+        Intent intent = new Intent(this, UserActivity.class);
+        startActivity(intent);
+    }
+    public void detailClick(View view) {
+        Intent intent = new Intent(this, DetailActivity.class);
+        startActivity(intent);
+    }
 }
