@@ -6,6 +6,8 @@ import androidx.appcompat.widget.AppCompatButton;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,29 +23,44 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.laundryargan.MainActivity;
 import com.example.laundryargan.R;
+import com.example.laundryargan.app.AppController;
 import com.example.laundryargan.database.AppVar;
+import com.example.laundryargan.util.Server;
 
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class Login extends AppCompatActivity {
 
-    private static final String TAG = "Login";
-    private static final String URL_FOR_LOGIN = "https://192.168.65.93/proyek/login.php";
+    private static final String TAG = Login.class.getSimpleName();
+    private static final String URL_FOR_LOGIN = Server.URL +"login1.php";
     ProgressDialog progressDialog;
-    private EditText loginInputEmail, loginInputPassword;
+    private EditText loginInputUsername, loginInputPassword;
     private Button btnlogin;
     private Button btnLinkSignup;
+    int success;
+    ConnectivityManager con;
+    private static final String TAG_SUCCESS = "success";
+    private static final String TAG_MESSAGE = "message";
+
+    String tag_json_obj = "json_obj_req";
+
+    SharedPreferences sharedpreferences;
+    Boolean session = false;
+    String id, username;
+    public static final String my_shared_preferences = "my_shared_preferences";
+    public static final String session_status = "session_status";
+    public final static String TAG_USERNAME = "username";
+    public final static String TAG_ID = "id";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        loginInputEmail = (EditText) findViewById(R.id.username);
+        loginInputUsername = (EditText) findViewById(R.id.username);
         loginInputPassword = (EditText) findViewById(R.id.password);
         btnlogin = (Button) findViewById(R.id.btn_login);
         btnLinkSignup = (Button) findViewById(R.id.btn_link_signup);
@@ -51,11 +68,41 @@ public class Login extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
 
+        con = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        {
+            if(con.getActiveNetworkInfo() !=null && con.getActiveNetworkInfo().isAvailable()
+            && con.getActiveNetworkInfo().isConnected()){
+
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"No Internet", Toast.LENGTH_LONG).show();
+            }
+        }
+        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+        session = sharedpreferences.getBoolean(session_status, false);
+        id = sharedpreferences.getString(TAG_ID, null);
+        username = sharedpreferences.getString(TAG_USERNAME, null);
+
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
+
             public void onClick(View view) {
-                loginUser(loginInputEmail.getText().toString(),
-                        loginInputPassword.getText().toString());
+                String username = loginInputUsername.getText().toString();
+                String password = loginInputPassword.getText().toString();
+
+                if(username.trim().length()>0 && password.trim().length()>0){
+                    if(con.getActiveNetworkInfo()!= null
+                       && con.getActiveNetworkInfo().isAvailable()
+                       && con.getActiveNetworkInfo().isConnected()){
+                        checkLogin(username, password);
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext() ,"No Internet Connection", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else {
+                    Toast.makeText(getApplicationContext() ,"Kolom tidak boleh kosong", Toast.LENGTH_LONG).show();
+                }
             }
         });
         btnLinkSignup.setOnClickListener(new View.OnClickListener() {
@@ -68,72 +115,92 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    private void loginUser( final String username, final String password) {
-        // Tag used to cancel the request
-        String cancel_req_tag = "login";
-        progressDialog.setMessage("Logging you in...");
+    private void checkLogin(final String username, final String password) {
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setCancelable(false);
+        progressDialog.setMessage("Logging in ...");
         showDialog();
-        StringRequest strReq = new StringRequest(Request.Method.POST,
-                URL_FOR_LOGIN, new Response.Listener<String>() {
+
+        StringRequest strReq = new StringRequest(Request.Method.POST, URL_FOR_LOGIN, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                Log.d(TAG, "Register Response: " + response.toString());
+                Log.e(TAG, "Login Response: " + response.toString());
                 hideDialog();
+
                 try {
                     JSONObject jObj = new JSONObject(response);
-                    boolean error = jObj.getBoolean("error");
+                    success = jObj.getInt(TAG_SUCCESS);
 
-                    if (!error) {
-                        String login = jObj.getJSONObject("login").getString("username");
-                        // Launch User activity
-                        Intent intent = new Intent(
-                                Login.this,
-                                menu.class);
-                        intent.putExtra("username", login);
-                        startActivity(intent);
+                    // Check for error node in json
+                    if (success == 1) {
+                        String username = jObj.getString(TAG_USERNAME);
+                        //String id = jObj.getString(TAG_ID);
+
+                        Log.e("Successfully Login!", jObj.toString());
+
+                        Toast.makeText(getApplicationContext(), jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+
+                        // menyimpan login ke session
+                        SharedPreferences.Editor editor = sharedpreferences.edit();
+                        editor.putBoolean(session_status, true);
+                        //editor.putString(TAG_ID, id);
+                        editor.putString(TAG_USERNAME, username);
+                        editor.commit();
+
+                        // Memanggil main activity
+                        Intent intent = new Intent(Login.this, menu.class);
+                        //intent.putExtra(TAG_ID, id);
+                        intent.putExtra(TAG_USERNAME, username);
                         finish();
+                        startActivity(intent);
                     } else {
-
-                        String errorMsg = jObj.getString("error_msg");
                         Toast.makeText(getApplicationContext(),
-                                errorMsg, Toast.LENGTH_LONG).show();
+                                jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+
                     }
                 } catch (JSONException e) {
+                    // JSON error
                     e.printStackTrace();
                 }
 
             }
         }, new Response.ErrorListener() {
+
             @Override
             public void onErrorResponse(VolleyError error) {
                 Log.e(TAG, "Login Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
+
                 hideDialog();
+
             }
         }) {
+
             @Override
             protected Map<String, String> getParams() {
-                // Posting params to login url
+                // Posting parameters to login url
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("username", username);
                 params.put("password", password);
+
                 return params;
             }
+
         };
+
         // Adding request to request queue
-        AppSingleton.getInstance(getApplicationContext()).addToRequestQueue(strReq,cancel_req_tag);
-    }
-
-
-    private void hideDialog() {
-        if(progressDialog.isShowing())
-            progressDialog.dismiss();
+        AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
     }
 
     private void showDialog() {
-        if(!progressDialog.isShowing())
+        if (!progressDialog.isShowing())
             progressDialog.show();
+    }
+
+    private void hideDialog() {
+        if (progressDialog.isShowing())
+            progressDialog.dismiss();
     }
 }

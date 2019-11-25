@@ -18,7 +18,7 @@ public class Argan extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(Argan.this, menu.class);
+                Intent i = new Intent(Argan.this, Login.class);
                 startActivity(i);
                 finish();
             }
