@@ -1,7 +1,9 @@
 package com.example.laundryargan.tampilan;
 
+import com.example.laundryargan.util.Server;
+
 public class User extends Koneksi {
-    String URL = "http://192.168.65.93/proyek/server5.php";
+    String URL = Server.URL + "server5.php";
     String url = "";
     String response = "";
 

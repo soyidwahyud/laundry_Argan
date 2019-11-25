@@ -1,7 +1,9 @@
 package com.example.laundryargan.tampilan;
 
+import com.example.laundryargan.util.Server;
+
 public class PelangganActivity2 extends Koneksi {
-    String URL = "http://192.168.10.162/proyek/server.php";
+    String URL = Server.URL + "server.php";
     String url = "";
     String response = "";
 

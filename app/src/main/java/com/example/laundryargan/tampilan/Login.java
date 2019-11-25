@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -55,6 +56,8 @@ public class Login extends AppCompatActivity {
     public final static String TAG_USERNAME = "username";
     public final static String TAG_ID = "id";
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +85,15 @@ public class Login extends AppCompatActivity {
         session = sharedpreferences.getBoolean(session_status, false);
         id = sharedpreferences.getString(TAG_ID, null);
         username = sharedpreferences.getString(TAG_USERNAME, null);
+
+        if (session) {
+            Intent intent = new Intent(Login.this, menu.class);
+            intent.putExtra(TAG_ID, id);
+            intent.putExtra(TAG_USERNAME, username);
+            finish();
+            startActivity(intent);
+        }
+
 
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +125,7 @@ public class Login extends AppCompatActivity {
 
             }
         });
+
     }
 
     private void checkLogin(final String username, final String password) {
@@ -193,6 +206,7 @@ public class Login extends AppCompatActivity {
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
     }
+
 
     private void showDialog() {
         if (!progressDialog.isShowing())

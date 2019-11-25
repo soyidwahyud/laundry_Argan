@@ -203,8 +203,8 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
 
         // Membuat AlertDialog untuk mengubah data di Biodata
         AlertDialog.Builder builderEditBiodata = new AlertDialog.Builder(this);
-        builderEditBiodata.setIcon(R.drawable.ic_history_48px_512);
-        builderEditBiodata.setTitle("Update Biodata");
+        builderEditBiodata.setIcon(R.drawable.refresh);
+        builderEditBiodata.setTitle("Update Barang");
         builderEditBiodata.setView(layoutInput);
         builderEditBiodata.setPositiveButton("Update", new DialogInterface.OnClickListener() {
             @Override
@@ -249,8 +249,8 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
 
         // Membuat AlertDialog untuk menambahkan data pada Biodata
         AlertDialog.Builder builderInsertBiodata= new AlertDialog.Builder(this);
-        builderInsertBiodata.setIcon(R.drawable.ic_history_48px_512);
-        builderInsertBiodata.setTitle("Insert Biodata");
+        builderInsertBiodata.setIcon(R.drawable.input);
+        builderInsertBiodata.setTitle("Insert Barang");
         builderInsertBiodata.setView(layoutInput);
         builderInsertBiodata.setPositiveButton("Insert", new DialogInterface.OnClickListener() {
             @Override

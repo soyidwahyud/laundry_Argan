@@ -205,8 +205,8 @@ public class UserActivity extends AppCompatActivity implements View.OnClickListe
 
         // Membuat AlertDialog untuk mengubah data di Biodata
         AlertDialog.Builder builderEditBiodata = new AlertDialog.Builder(this);
-        builderEditBiodata.setIcon(R.drawable.ic_history_48px_512);
-        builderEditBiodata.setTitle("Update Biodata");
+        builderEditBiodata.setIcon(R.drawable.refresh);
+        builderEditBiodata.setTitle("Update User");
         builderEditBiodata.setView(layoutInput);
         builderEditBiodata.setPositiveButton("Update", new DialogInterface.OnClickListener() {
             @Override

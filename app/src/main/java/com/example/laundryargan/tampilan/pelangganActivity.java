@@ -220,8 +220,8 @@ public class pelangganActivity extends AppCompatActivity implements View.OnClick
 
         // Membuat AlertDialog untuk mengubah data di Biodata
         AlertDialog.Builder builderEditBiodata = new AlertDialog.Builder(this);
-        builderEditBiodata.setIcon(R.drawable.ic_history_48px_512);
-        builderEditBiodata.setTitle("Update Biodata");
+        builderEditBiodata.setIcon(R.drawable.refresh);
+        builderEditBiodata.setTitle("Update Pelanggan");
         builderEditBiodata.setView(layoutInput);
         builderEditBiodata.setPositiveButton("Update", new DialogInterface.OnClickListener() {
             @Override
@@ -269,8 +269,8 @@ public class pelangganActivity extends AppCompatActivity implements View.OnClick
         layoutInput.addView(editNotelp);
         // Membuat AlertDialog untuk menambahkan data pada Biodata
         AlertDialog.Builder builderInsertBiodata= new AlertDialog.Builder(this);
-        builderInsertBiodata.setIcon(R.drawable.ic_history_48px_512);
-        builderInsertBiodata.setTitle("Insert Biodata");
+        builderInsertBiodata.setIcon(R.drawable.input);
+        builderInsertBiodata.setTitle("Insert Pelanggan");
         builderInsertBiodata.setView(layoutInput);
         builderInsertBiodata.setPositiveButton("Insert", new DialogInterface.OnClickListener() {
             @Override

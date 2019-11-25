@@ -1,9 +1,11 @@
 package com.example.laundryargan.tampilan;
 
+import com.example.laundryargan.util.Server;
+
 import java.sql.Date;
 
 public class Header extends Koneksi {
-    String URL = "http://192.168.65.93/proyek/server3.php";
+    String URL = Server.URL + "server3.php";
     String url = "";
     String response = "";
 
