@@ -13,7 +13,17 @@
         android:layout_width="186dp"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
+        android:background="#FFFFFF"
+        android:drawableLeft="@drawable/input"
         android:text="Tambah Barang" />
+
+    <TextView
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Tabel Barang"
+        android:textSize="25dp"
+        />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"

@@ -8,7 +8,13 @@
     android:orientation="vertical"
     tools:context=".tampilan.DetailActivity">
 
-
+    <TextView
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:text="Tabel Transaksi"
+        android:textSize="25dp"
+        />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"
