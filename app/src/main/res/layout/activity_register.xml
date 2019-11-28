@@ -18,6 +18,21 @@
         android:paddingRight="20dp">
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/signup_input_layout_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp">
+
+            <EditText
+                android:id="@+id/signup_input_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="ID" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/signup_input_layout_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
