@@ -93,14 +93,14 @@ public class RegisterActivity extends AppCompatActivity {
         pDialog.setCancelable(false);
         pDialog.setMessage("Register ...");
 //        showDialog();
-        hideDialog();
+//        hideDialog();
 
         StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 Log.e(TAG, "Register Response: " + response.toString());
 //                hideDialog();
-                showDialog();
+//                showDialog();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -121,6 +121,7 @@ public class RegisterActivity extends AppCompatActivity {
                     } else {
                         Toast.makeText(getApplicationContext(),
                                 jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
+                        register();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -133,7 +134,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
 
-                hideDialog();
+//                hideDialog();
             }
         }) {
             @Override
@@ -150,6 +151,12 @@ public class RegisterActivity extends AppCompatActivity {
         };
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
+    }
+
+    private void register() {
+        Intent intent = new Intent(RegisterActivity.this, RegisterActivity.class);
+        finish();
+        startActivity(intent);
     }
 
     private void hideDialog() {
