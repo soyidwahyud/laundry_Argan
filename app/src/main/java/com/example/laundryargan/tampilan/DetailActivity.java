@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.laundryargan.R;
 
@@ -229,7 +230,19 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             e.printStackTrace();
         }
     }
+    public void deleteDetail (int iddetail) {
+        d.deleteDetail(iddetail);
+        finish();
+        startActivity(getIntent());
+    }
     public void onClick (View view) {
+            for (int  i= 0; i < buttonDelete.size(); i++) {
+                if (view.getId() == buttonDelete.get(i).getId() && view.getTag().toString().trim().equals("Delete")){
+                    Toast.makeText(DetailActivity.this, "Delete : " + buttonDelete.get(i).getId(), Toast.LENGTH_SHORT).show();
+                    int id = buttonDelete.get(i).getId();
+                    deleteDetail(id);
+                }
+            }
         /*if (view.getId() == R.id.buttonTambahBarang) {
             tambahBarang();
         }

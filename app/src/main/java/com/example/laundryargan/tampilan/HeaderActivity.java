@@ -176,7 +176,20 @@ public class HeaderActivity extends AppCompatActivity implements View.OnClickLis
             e.printStackTrace();
         }
     }
+    public void deleteHeader (int idtransaksi) {
+        h.deleteHeader(idtransaksi);
+        finish();
+        startActivity(getIntent());
+    }
     public void onClick (View view) {
+        for (int  i= 0; i < buttonDelete.size(); i++) {
+            if (view.getId() == buttonDelete.get(i).getId() && view.getTag().toString().trim().equals("Delete")){
+                Toast.makeText(HeaderActivity.this, "Delete : " + buttonDelete.get(i).getId(), Toast.LENGTH_SHORT).show();
+                int id = buttonDelete.get(i).getId();
+                deleteHeader(id);
+            }
+        }
+
         /*if (view.getId() == R.id.buttonTambahBarang) {
             tambahBarang();
         }
