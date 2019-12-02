@@ -59,16 +59,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Tanggal Masuk Laundry"
+                android:text="Tanggal Masuk Laundry : "
                 android:textColor="@android:color/black" />
 
-            <EditText
-                android:id="@+id/date_masuk"
-                android:layout_width="224dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:ems="10"
-                android:inputType="date" />
+            <Button
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/bt_datepicker"
+              android:text="Show Date Picker"/>
 
             <TextView
                 android:id="@+id/tgl_keluar"
@@ -76,18 +74,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="Tanggal Keluar Laundry"
+                android:text="Tanggal Keluar Laundry : "
                 android:textColor="@android:color/black" />
-
-            <EditText
-                android:id="@+id/editText6"
-                android:layout_width="229dp"
+            <Button
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="date" />
+                android:id="@+id/bt_datepickers"
+                android:text="Show Date Picket"/>
 
-            <ImageView
+             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="58dp"
                 android:layout_height="65dp"
@@ -109,22 +104,39 @@
                 android:layout_marginTop="8dp"
                 android:text="Kilat (1 hari) : Rp.5000/kg"
                 android:textColor="@android:color/black" />
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioGroupNb">
 
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioBiasa"
+                    android:checked="true"
+                    android:text="Biasa"/>
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/radioKilat"
+                    android:checked="true"
+                    android:text="Kilat"/>
+            </RadioGroup>
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/jumlahBerat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Harga"
+                android:text="Berat"
                 android:textColor="@android:color/black" />
 
             <EditText
-                android:id="@+id/editText7"
+                android:id="@+id/perkg"
                 android:layout_width="98dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="harga"
+                android:hint="kg"
                 android:numeric="integer" />
 
             <ImageView
@@ -143,20 +155,20 @@
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/textView13"
+                android:id="@+id/jumlahpd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Harga"
+                android:text="Jumlah Pakaian Dalam"
                 android:textColor="@android:color/black" />
 
             <EditText
-                android:id="@+id/editText8"
+                android:id="@+id/editTextPCS"
                 android:layout_width="94dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="harga"
+                android:hint="pcs"
                 android:numeric="integer" />
 
             <ImageView
@@ -175,20 +187,20 @@
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/textView15"
+                android:id="@+id/tambahBS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:text="Harga"
+                android:text="Tambah Bed Cover / Sprei"
                 android:textColor="@android:color/black" />
 
             <EditText
-                android:id="@+id/editText9"
+                android:id="@+id/tambahBSPCS"
                 android:layout_width="64dp"
                 android:layout_height="39dp"
                 android:layout_marginTop="4dp"
                 android:ems="10"
-                android:hint="harga"
+                android:hint="pcs"
                 android:numeric="integer" />
 
             <ImageView
@@ -207,20 +219,20 @@
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/textView17"
+                android:id="@+id/tambahanSelmut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Harga"
+                android:text="Tambahan Selimut"
                 android:textColor="@android:color/black" />
 
             <EditText
-                android:id="@+id/editText10"
+                android:id="@+id/tambahSelimutPCS"
                 android:layout_width="81dp"
                 android:layout_height="61dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:hint="harga"
+                android:hint="pcs"
                 android:numeric="integer" />
 
             <TextView
@@ -232,26 +244,24 @@
                 android:textColor="@android:color/black" />
 
             <TextView
-                android:id="@+id/textView19"
+                android:id="@+id/totHarga"
                 android:layout_width="206dp"
                 android:layout_height="34dp"
                 android:layout_marginTop="4dp"
                 android:hint="Rp." />
 
             <Button
-                android:id="@+id/button7"
+                android:id="@+id/buttonHitung"
                 android:layout_width="80dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="12dp"
-                android:onClick="buttonHitungData"
                 android:text="Hitung" />
 
             <Button
-                android:id="@+id/button8"
+                android:id="@+id/buttonSave"
                 android:layout_width="76dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="12dp"
-                android:onClick="buttonSave"
                 android:text="Save" />
         </LinearLayout>
     </ScrollView>

@@ -2,18 +2,44 @@ package com.example.laundryargan.tampilan;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.laundryargan.R;
+import com.example.laundryargan.util.hitung;
+import com.example.laundryargan.util.jajal;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 public class DataCuciMasuk extends AppCompatActivity {
-    private EditText bj, pd, bd, sel;
+    private EditText jmlpd, jmlbj, jmlsel, jmlbs;
    // private Button btnHitung, btnSave;
     private TextView txtHasil;
+    private DatePickerDialog datePickerDialog;
+    private SimpleDateFormat dateFormatter;
+    private TextView tgl_masuk;
+    private TextView tgl_keluar;
+    private Button btDatePicker;
+    private Button btDatePickers;
+    private RadioGroup radioGroupNb;
+    private RadioButton radioButtonNb;
+    private RadioButton radioBiasa;
+    private RadioButton radioKilat;
+    private Button buttonHitung;
+    private jajal Listener;
+    private Button buttonSave;
 
 
     @Override
@@ -21,36 +47,108 @@ public class DataCuciMasuk extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_data_cuci_masuk);
 
-        bj = findViewById(R.id.editText7);
-        pd = findViewById(R.id.editText8);
-        bd = findViewById(R.id.editText9);
-        sel = findViewById(R.id.editText10);
-       // btnHitung = findViewById(R.id.button7);
-       // btnSave = findViewById(R.id.button8);
-        txtHasil = findViewById(R.id.textView19);
+        dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
+        jmlbj = (EditText) findViewById(R.id.perkg);
+        jmlpd = (EditText) findViewById(R.id.editTextPCS);
+        jmlbs = (EditText) findViewById(R.id.tambahBSPCS);
+        jmlsel = (EditText) findViewById(R.id.tambahSelimutPCS);
+        txtHasil = (TextView) findViewById(R.id.totHarga);
+        tgl_masuk = findViewById(R.id.tgl_masuk);
+        tgl_keluar = findViewById(R.id.tgl_keluar);
+        btDatePicker = findViewById(R.id.bt_datepicker);
+        btDatePickers = findViewById(R.id.bt_datepickers);
+        radioGroupNb = findViewById(R.id.radioGroupNb);
+        buttonHitung = (Button) findViewById(R.id.buttonHitung);
+        buttonHitung.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    String berat = jmlbj.getText().toString();
+                    int jumlah = Integer.parseInt(berat);
+                    int selected = radioGroupNb.getCheckedRadioButtonId();
+                    radioButtonNb = (RadioButton) findViewById(selected);
+                    if (radioBiasa == radioButtonNb){
+                        equals(jumlah * 3500);
+                    } else if (radioKilat == radioButtonNb){
+                        equals(jumlah * 5000);
+                }
+//                Toast.makeText(getApplicationContext(), radioButtonNb.getText(),
+//                Toast.LENGTH_SHORT).show();
+            }
+        });
+        buttonSave = (Button) findViewById(R.id.buttonSave);
+
+        btDatePicker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog1();
+            }
+        });
+
+        btDatePickers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog2();
+            }
+        });
     }
 
-    public void buttonHitungData(View view) {
-        String bajuKg = bj.getText().toString();
-        String pakaiandlm = pd.getText().toString();
-        String bedsep = bd.getText().toString();
-        String Selimut = sel.getText().toString();
+            private void showDialog2() {
+                Calendar newCalendar = Calendar.getInstance();
 
-        float bj = Float.parseFloat(bajuKg);
-        float pd = Float.parseFloat(pakaiandlm);
-        float bd = Float.parseFloat(bedsep);
-        float sel = Float.parseFloat(Selimut);
-        float hasil = hitungTotal(bj, pd, bd, sel);
-        String output = String.valueOf(hasil);
-        txtHasil.setText(output);
+                datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                        Calendar newDate = Calendar.getInstance();
+                        newDate.set(year, monthOfYear, dayOfMonth);
 
-    }
+                        tgl_keluar.setText("Tanggal Keluar : " + dateFormatter.format(newDate.getTime()));
 
-    private float hitungTotal(float bj, float pd, float bd, float sel) {
-        return  (bj + pd + bd + sel);
-    }
+                    }
+                }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
 
-    public void buttonSave(View view) {
-    }
+            }
+
+            private void showDialog1() {
+                Calendar newCalendar = Calendar.getInstance();
+
+                datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker datePicker, int year, int monthOfYear, int dayOfMonth) {
+                        Calendar newDate = Calendar.getInstance();
+                        newDate.set(year, monthOfYear, dayOfMonth);
+
+                        tgl_masuk.setText("Tanggal Masuk : " + dateFormatter.format(newDate.getTime()));
+
+                    }
+                }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
+                datePickerDialog.show();
+            }
+
+
+//    public void buttonHitungData(View view) {
+//        String bajuKg = bj.getText().toString();
+//        String pakaiandlm = pd.getText().toString();
+//        String bedsep = bd.getText().toString();
+//        String Selimut = sel.getText().toString();
+
+//        float bj = Float.parseFloat(bajuKg);
+//        float pd = Float.parseFloat(pakaiandlm);
+//        float bd = Float.parseFloat(bedsep);
+//        float sel = Float.parseFloat(Selimut);
+//        float hasil = hitungTotal(bj, pd, bd, sel);
+//        String output = String.valueOf(hasil);
+//        txtHasil.setText(output);
+
+//    }
+
+//    private float hitungTotal(float bj, float pd, float bd, float sel) {
+//        return  (bj + pd + bd + sel);
+//    }
+
+//    public void buttonSave(View view) {
+//        Intent intent = new Intent(DataCuciMasuk.this, DetailActivity.class);
+//        startActivity(intent);
+//    }
 }
