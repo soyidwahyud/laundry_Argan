@@ -60,7 +60,6 @@ public class RegisterActivity extends AppCompatActivity {
         }
         btn_login = (Button) findViewById(R.id.btn_link_login);
         btn_register = (Button) findViewById(R.id.btn_signup);
-        txt_iduser = (EditText) findViewById(R.id.signup_input_id);
         txt_nama = (EditText) findViewById(R.id.signup_input_nama);
         txt_username = (EditText) findViewById(R.id.signup_input_username);
         txt_password = (EditText) findViewById(R.id.signup_input_password);
@@ -76,14 +75,13 @@ public class RegisterActivity extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String iduser = txt_iduser.getText().toString();
                 String nama = txt_nama.getText().toString();
                 String username = txt_username.getText().toString();
                 String password = txt_password.getText().toString();
 
                 if(conMgr.getActiveNetworkInfo() != null && conMgr.getActiveNetworkInfo().isAvailable()
                         && conMgr.getActiveNetworkInfo().isConnected()){
-                    checkRegister(iduser, nama, username, password);
+                    checkRegister(nama, username, password);
 
                 } else{
                     Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
@@ -91,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
     }
-    private void checkRegister(final String iduser, final String nama, final String username, final String password) {
+    private void checkRegister(final String nama, final String username, final String password) {
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
         pDialog.setMessage("Register ...");
@@ -115,7 +113,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
 
-                        txt_iduser.setText(u.tampilID());
+
                         txt_nama.setText("");
                         txt_username.setText("");
                         txt_password.setText("");
@@ -144,7 +142,6 @@ public class RegisterActivity extends AppCompatActivity {
             protected Map<String, String> getParams(){
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("iduser", iduser);
                 params.put("nama", nama);
                 params.put("username", username);
                 params.put("password", password);
