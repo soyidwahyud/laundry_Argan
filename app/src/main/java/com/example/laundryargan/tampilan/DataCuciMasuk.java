@@ -58,6 +58,8 @@ public class DataCuciMasuk extends AppCompatActivity {
         btDatePicker = findViewById(R.id.bt_datepicker);
         btDatePickers = findViewById(R.id.bt_datepickers);
         radioGroupNb = findViewById(R.id.radioGroupNb);
+
+
         buttonHitung = (Button) findViewById(R.id.buttonHitung);
         buttonHitung.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,8 +97,15 @@ public class DataCuciMasuk extends AppCompatActivity {
                 return (hargaPD + hargaSel + hargaBS + kg);
             }
         });
-        buttonSave = (Button) findViewById(R.id.buttonSave);
 
+        buttonSave = (Button) findViewById(R.id.buttonSave);
+        buttonSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DataCuciMasuk.this, DetailActivity.class);
+                startActivity(intent);
+            }
+        });
         btDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,27 +153,6 @@ public class DataCuciMasuk extends AppCompatActivity {
                 }, newCalendar.get(Calendar.YEAR), newCalendar.get(Calendar.MONTH), newCalendar.get(Calendar.DAY_OF_MONTH));
                 datePickerDialog.show();
             }
-
-
-//    public void buttonHitungData(View view) {
-//        String bajuKg = bj.getText().toString();
-//        String pakaiandlm = pd.getText().toString();
-//        String bedsep = bd.getText().toString();
-//        String Selimut = sel.getText().toString();
-
-//        float bj = Float.parseFloat(bajuKg);
-//        float pd = Float.parseFloat(pakaiandlm);
-//        float bd = Float.parseFloat(bedsep);
-//        float sel = Float.parseFloat(Selimut);
-//        float hasil = hitungTotal(bj, pd, bd, sel);
-//        String output = String.valueOf(hasil);
-//        txtHasil.setText(output);
-
-//    }
-
-//    private float hitungTotal(float bj, float pd, float bd, float sel) {
-//        return  (bj + pd + bd + sel);
-//    }
 
 //    public void buttonSave(View view) {
 //        Intent intent = new Intent(DataCuciMasuk.this, DetailActivity.class);
