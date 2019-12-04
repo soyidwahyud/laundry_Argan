@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Pakaian Dalam Lebih Dari 3 : Rp.500/pcs"
+                android:text="Pakaian Dalam : Rp.500/pcs"
                 android:textColor="@android:color/black" />
 
             <TextView

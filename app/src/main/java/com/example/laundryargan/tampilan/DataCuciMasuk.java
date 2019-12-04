@@ -38,7 +38,6 @@ public class DataCuciMasuk extends AppCompatActivity {
     private RadioButton radioBiasa;
     private RadioButton radioKilat;
     private Button buttonHitung;
-    private jajal Listener;
     private Button buttonSave;
 
 
@@ -65,15 +64,35 @@ public class DataCuciMasuk extends AppCompatActivity {
             public void onClick(View view) {
                     String berat = jmlbj.getText().toString();
                     int jumlah = Integer.parseInt(berat);
+                    String pcs = jmlpd.getText().toString();
+                    int jmlPakaianDalam = Integer.parseInt(pcs);
+                    String jumlahSel = jmlsel.getText().toString();
+                    int pcsSelimut = Integer.parseInt(jumlahSel);
+                    String jumlahBS = jmlbs.getText().toString();
+                    int pcsBS = Integer.parseInt(jumlahBS);
+
+
+                    int hargaPD = jmlPakaianDalam * 500;
+                    int hargaSel = pcsSelimut * 8000;
+                    int hargaBS = pcsBS * 10000;
+
                     int selected = radioGroupNb.getCheckedRadioButtonId();
+                    int kg;
                     radioButtonNb = (RadioButton) findViewById(selected);
-                    if (radioBiasa == radioButtonNb){
-                        equals(jumlah * 3500);
-                    } else if (radioKilat == radioButtonNb){
-                        equals(jumlah * 5000);
-                }
-//                Toast.makeText(getApplicationContext(), radioButtonNb.getText(),
+                    if (radioButtonNb.getText().equals("Biasa")){
+                        kg = jumlah * 3500;
+                    } else {
+                        kg = jumlah * 5000;
+                    }
+                    int hasTot = hargaTotal(hargaBS, hargaPD, hargaSel, kg);
+                    String output = String.valueOf(hasTot);
+                    txtHasil.setText(output);
+//                Toast.makeText(getApplicationContext(), String.valueOf(hargaTotal),
 //                Toast.LENGTH_SHORT).show();
+            }
+
+            private int hargaTotal(int hargaBS, int hargaPD, int hargaSel, int kg) {
+                return (hargaPD + hargaSel + hargaBS + kg);
             }
         });
         buttonSave = (Button) findViewById(R.id.buttonSave);
