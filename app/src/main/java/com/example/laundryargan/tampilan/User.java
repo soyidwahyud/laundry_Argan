@@ -17,6 +17,16 @@ public class User extends Koneksi {
         }
         return response;
     }
+    public String tampilID() {
+        try {
+            url = URL + "?operasi=viewId";
+            System.out.println("URL Tampil Detail : " + url);
+            response = call(url);
+        }
+        catch (Exception e) {
+        }
+        return response;
+    }
     public String insertUser(String iduser, String username,String password, String nama) {
         try {
             url = URL + "?operasi=insertUser&iduser=" + iduser + "&username=" + username + "&password=" + password + "&nama=" +nama;

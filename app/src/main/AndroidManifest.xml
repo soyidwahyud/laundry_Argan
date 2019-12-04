@@ -17,7 +17,7 @@
         android:name=".app.AppController"
         android:networkSecurityConfig="@xml/network_security_config">
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
-        <activity android:name=".tampilan.RegisterActivity"></activity>
+
         <activity android:name=".tampilan.UserActivity" />
         <activity android:name=".tampilan.DetailActivity" />
         <activity android:name=".tampilan.HeaderActivity" />
@@ -44,7 +44,7 @@
         </activity>
         <activity android:name=".tampilan.DataCuciMasuk" />
         <activity android:name=".MainActivity" />
-
+        <activity android:name=".tampilan.RegisterActivity"/>
     </application>
 
 </manifest>

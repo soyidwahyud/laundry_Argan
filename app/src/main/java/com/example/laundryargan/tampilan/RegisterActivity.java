@@ -28,9 +28,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RegisterActivity extends AppCompatActivity {
+    User u = new User();
     ProgressDialog pDialog;
     Button btn_register, btn_login;
     EditText txt_iduser, txt_nama, txt_username, txt_password;
+
+
 
     int success;
     ConnectivityManager conMgr;
@@ -112,7 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
 
-                        txt_iduser.setText("");
+                        txt_iduser.setText(u.tampilID());
                         txt_nama.setText("");
                         txt_username.setText("");
                         txt_password.setText("");
