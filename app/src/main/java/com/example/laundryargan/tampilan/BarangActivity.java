@@ -58,21 +58,37 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
         TextView viewHeaderidbarang = new TextView(this);
         TextView viewHeadernama_barang = new TextView(this);
         TextView viewHeaderharga = new TextView(this);
+        TextView viewHeadernama_barang2 = new TextView(this);
+        TextView viewHeaderharga2 = new TextView(this);
+        TextView viewHeadernama_barang3 = new TextView(this);
+        TextView viewHeaderharga3 = new TextView(this);
         TextView viewHeaderAction = new TextView(this);
 
         viewHeaderidbarang.setText("ID");
-        viewHeadernama_barang.setText("Nama");
-        viewHeaderharga.setText("Harga");
+        viewHeadernama_barang.setText("Nama Barang 1");
+        viewHeaderharga.setText("Harga 1");
+        viewHeadernama_barang2.setText("Nama Barang 2");
+        viewHeaderharga2.setText("Harga 2");
+        viewHeadernama_barang3.setText("Nama Barang 3");
+        viewHeaderharga3.setText("Harga 3");
         viewHeaderAction.setText("Action");
 
         viewHeaderidbarang.setPadding(5, 1, 6, 1);
         viewHeadernama_barang.setPadding(5, 1, 6, 1);
         viewHeaderharga.setPadding(5, 1, 6, 1);
+        viewHeadernama_barang2.setPadding(5, 1, 6, 1);
+        viewHeaderharga2.setPadding(5, 1, 6, 1);
+        viewHeadernama_barang3.setPadding(5, 1, 6, 1);
+        viewHeaderharga3.setPadding(5, 1, 6, 1);
         viewHeaderAction.setPadding(5, 1, 6, 1);
 
         barisTabel.addView(viewHeaderidbarang);
         barisTabel.addView(viewHeadernama_barang);
         barisTabel.addView(viewHeaderharga);
+        barisTabel.addView(viewHeadernama_barang2);
+        barisTabel.addView(viewHeaderharga2);
+        barisTabel.addView(viewHeadernama_barang3);
+        barisTabel.addView(viewHeaderharga3);
         barisTabel.addView(viewHeaderAction);
 
         // Menyusun ukuran dari tabel
@@ -86,10 +102,18 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
                 String idbarang = jsonChildNode.optString("idbarang");
                 String namabarang = jsonChildNode.optString("namabarang");
                 String harga = jsonChildNode.optString("harga");
+                String namabarang2 = jsonChildNode.optString("namabarang2");
+                String harga2 = jsonChildNode.optString("harga2");
+                String namabarang3 = jsonChildNode.optString("namabarang3");
+                String harga3 = jsonChildNode.optString("harga3");
 
                 System.out.println("ID      : " + idbarang);
                 System.out.println("Nama    : " + namabarang);
                 System.out.println("Harga   : " + harga);
+                System.out.println("Nama2    : " + namabarang2);
+                System.out.println("Harga2   : " + harga2);
+                System.out.println("Nama3    : " + namabarang3);
+                System.out.println("Harga3   : " + harga3);
 
                 barisTabel = new TableRow(this);
 
@@ -112,6 +136,26 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
                 viewHarga.setText(harga);
                 viewHarga.setPadding(5, 1, 6, 1);
                 barisTabel.addView(viewHarga);
+
+                TextView viewNama2 = new TextView(this);
+                viewNama2.setText(namabarang2);
+                viewNama2.setPadding(5, 1, 6, 1);
+                barisTabel.addView(viewNama2);
+
+                TextView viewHarga2 = new TextView(this);
+                viewHarga2.setText(harga2);
+                viewHarga2.setPadding(5, 1, 6, 1);
+                barisTabel.addView(viewHarga2);
+
+                TextView viewNama3= new TextView(this);
+                viewNama3.setText(namabarang3);
+                viewNama3.setPadding(5, 1, 6, 1);
+                barisTabel.addView(viewNama3);
+
+                TextView viewHarga3 = new TextView(this);
+                viewHarga3.setText(harga3);
+                viewHarga3.setPadding(5, 1, 6, 1);
+                barisTabel.addView(viewHarga3);
 
 
                 // Menambahkan button Edit
@@ -169,6 +213,10 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
     public void getDataByID (int idbarang) {
         String namaEdit = null;
         String hargaEdit = null;
+        String namaEdit2 = null;
+        String hargaEdit2 = null;
+        String namaEdit3 = null;
+        String hargaEdit3 = null;
         JSONArray arrayPersonal;
 
         try {
@@ -177,6 +225,10 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
                 JSONObject jsonChildNode = arrayPersonal.getJSONObject(i);
                 namaEdit = jsonChildNode.optString("namabarang");
                 hargaEdit = jsonChildNode.optString("harga");
+                namaEdit2 = jsonChildNode.optString("namabarang2");
+                hargaEdit2 = jsonChildNode.optString("harga2");
+                namaEdit3 = jsonChildNode.optString("namabarang3");
+                hargaEdit3 = jsonChildNode.optString("harga3");
             }
         }
         catch (JSONException e) {
@@ -200,6 +252,22 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
         editHarga.setText(hargaEdit);
         layoutInput.addView(editHarga);
 
+        final EditText editNama2 = new EditText(this);
+        editNama2.setText(namaEdit2);
+        layoutInput.addView(editNama2);
+
+        final EditText editHarga2 = new EditText(this);
+        editHarga2.setText(hargaEdit2);
+        layoutInput.addView(editHarga2);
+
+        final EditText editNama3 = new EditText(this);
+        editNama3.setText(namaEdit3);
+        layoutInput.addView(editNama3);
+
+        final EditText editHarga3 = new EditText(this);
+        editHarga3.setText(hargaEdit3);
+        layoutInput.addView(editHarga3);
+
 
         // Membuat AlertDialog untuk mengubah data di Biodata
         AlertDialog.Builder builderEditBiodata = new AlertDialog.Builder(this);
@@ -211,10 +279,15 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
             public void onClick(DialogInterface dialog, int which) {
                 String nama = editNama.getText().toString();
                 String harga = editHarga.getText().toString();
-                System.out.println("Nama : " + nama + "Harga : " + harga);
+                String nama2 = editNama2.getText().toString();
+                String harga2 = editHarga2.getText().toString();
+                String nama3 = editNama3.getText().toString();
+                String harga3 = editHarga3.getText().toString();
+                System.out.println("Nama : " + nama + "Harga : " + harga + "Nama2 : " + nama2 + "Harga 2 : " +harga2 + "Nama 3 : " + nama3 + " Harga 3 : " + harga3);
 
                 String laporan = b.updateBarang(viewId.getText().toString(), editNama.getText().toString(),
-                        editHarga.getText().toString());
+                        editHarga.getText().toString(),editNama2.getText().toString(),editHarga2.getText().toString(),
+                        editNama3.getText().toString(),editHarga3.getText().toString());
 
                 Toast.makeText(BarangActivity.this, laporan, Toast.LENGTH_SHORT).show();
 
@@ -246,6 +319,22 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
         editHarga.setHint("Harga");
         layoutInput.addView(editHarga);
 
+        final EditText editNama2 = new EditText(this);
+        editNama2.setHint("Nama 2");
+        layoutInput.addView(editNama2);
+
+        final EditText editHarga2 = new EditText(this);
+        editHarga2.setHint("Harga 2");
+        layoutInput.addView(editHarga2);
+
+        final EditText editNama3 = new EditText(this);
+        editNama3.setHint("Nama 3");
+        layoutInput.addView(editNama3);
+
+        final EditText editHarga3 = new EditText(this);
+        editHarga3.setHint("Harga 3");
+        layoutInput.addView(editHarga3);
+
 
         // Membuat AlertDialog untuk menambahkan data pada Biodata
         AlertDialog.Builder builderInsertBiodata= new AlertDialog.Builder(this);
@@ -257,9 +346,13 @@ public class BarangActivity extends AppCompatActivity implements View.OnClickLis
             public void onClick(DialogInterface dialog, int which) {
                 String nama = editNama.getText().toString();
                 String harga = editHarga.getText().toString();
-                System.out.println("Nama : " + nama + "Harga : " + harga);
+                String nama2 = editNama2.getText().toString();
+                String harga2 = editHarga2.getText().toString();
+                String nama3 = editNama3.getText().toString();
+                String harga3 = editHarga3.getText().toString();
+                System.out.println("Nama : " + nama + "Harga : " + harga + "Nama2 : " + nama2 + "Harga 2 : " +harga2 + "Nama 3 : " + nama3 + " Harga 3 : " + harga3);
 
-                String laporan  = b.insertBarang(nama, harga);
+                String laporan  = b.insertBarang(nama, harga, nama2,harga2,nama3,harga3);
                 Toast.makeText(BarangActivity.this, laporan, Toast.LENGTH_SHORT).show();
 
                 finish();

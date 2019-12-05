@@ -17,9 +17,9 @@ public class Barang extends Koneksi{
         }
         return response;
     }
-    public String insertBarang(String namabarang, String harga) {
+    public String insertBarang(String namabarang, String harga, String namabarang2, String harga2, String namabarang3, String harga3) {
         try {
-            url = URL + "?operasi=insertBarang&namabarang=" + namabarang + "&harga=" + harga;
+            url = URL + "?operasi=insertBarang&namabarang=" + namabarang + "&harga=" + harga + "&namabarang2 = " + namabarang2 + "&harga2= " + harga2 +"&namabarang3= " + namabarang3 + "&harga3= " + harga3;
             System.out.println("URL Insert Pelanggan : " + url);
             response = call(url);
         }
@@ -37,10 +37,10 @@ public class Barang extends Koneksi{
         }
         return response;
     }
-    public String updateBarang (String id, String nama, String harga) {
+    public String updateBarang (String id, String nama, String harga, String namabarang2, String harga2, String namabarang3, String harga3) {
         try {
-            url = URL + "?operasi=updateBarang&idbarang=" + id + "&namabarang=" + nama + "&harga=" + harga;
-            System.out.println("URL Insert Pelanggan : " + url);
+            url = URL + "?operasi=updateBarang&idbarang=" + id + "&namabarang=" + nama + "&harga=" + harga+ "&namabarang2 = " + namabarang2 + "&harga2= " + harga2 +"&namabarang3= " + namabarang3 + "&harga3= " + harga3;
+            System.out.println("URL Update Pelanggan : " + url);
             response = call(url);
         }
         catch (Exception e) {
