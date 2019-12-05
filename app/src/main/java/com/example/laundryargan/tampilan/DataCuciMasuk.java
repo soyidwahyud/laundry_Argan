@@ -25,7 +25,16 @@ import java.util.Locale;
 
 public class DataCuciMasuk extends AppCompatActivity {
     private EditText jmlpd, jmlbj, jmlsel, jmlbs;
-   // private Button btnHitung, btnSave;
+    private EditText np, ntlp, alamat;
+    private String namaP = "Nama Pelanggan";
+    private String nohp = "Nomor HP";
+    private String almt = "Alamat Pelanggan";
+    private int jumlahP;
+    private int jumlahPaDal;
+    private int jumlahSeli;
+    private int jumlahBedSp;
+
+    // private Button btnHitung, btnSave;
     private TextView txtHasil;
     private DatePickerDialog datePickerDialog;
     private SimpleDateFormat dateFormatter;
@@ -58,6 +67,10 @@ public class DataCuciMasuk extends AppCompatActivity {
         btDatePicker = findViewById(R.id.bt_datepicker);
         btDatePickers = findViewById(R.id.bt_datepickers);
         radioGroupNb = findViewById(R.id.radioGroupNb);
+        np = findViewById(R.id.input_nama);
+        ntlp = findViewById(R.id.input_no_hp);
+        alamat = findViewById(R.id.input_alamat);
+
 
 
         buttonHitung = (Button) findViewById(R.id.buttonHitung);
@@ -74,7 +87,13 @@ public class DataCuciMasuk extends AppCompatActivity {
                     int pcsBS = Integer.parseInt(jumlahBS);
 
 
-                    int hargaPD = jmlPakaianDalam * 500;
+                    int jumlahPakaianDalam = 0;
+                    if (jmlPakaianDalam <= 3){
+                        jumlahPakaianDalam = 0;
+                    } else if (jmlPakaianDalam >= 3){
+                        jumlahPakaianDalam = jmlPakaianDalam * 500;
+                    }
+
                     int hargaSel = pcsSelimut * 8000;
                     int hargaBS = pcsBS * 10000;
 
@@ -86,26 +105,60 @@ public class DataCuciMasuk extends AppCompatActivity {
                     } else {
                         kg = jumlah * 5000;
                     }
-                    int hasTot = hargaTotal(hargaBS, hargaPD, hargaSel, kg);
+                    int hasTot = hargaTotal(hargaBS, jumlahPakaianDalam, hargaSel, kg);
                     String output = String.valueOf(hasTot);
                     txtHasil.setText(output);
 //                Toast.makeText(getApplicationContext(), String.valueOf(hargaTotal),
 //                Toast.LENGTH_SHORT).show();
             }
 
-            private int hargaTotal(int hargaBS, int hargaPD, int hargaSel, int kg) {
-                return (hargaPD + hargaSel + hargaBS + kg);
+            private int hargaTotal(int hargaBS, int jumlahPakaianDalam, int hargaSel, int kg) {
+                return (jumlahPakaianDalam + hargaSel + hargaBS + kg);
             }
         });
 
         buttonSave = (Button) findViewById(R.id.buttonSave);
-        buttonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(DataCuciMasuk.this, DetailActivity.class);
-                startActivity(intent);
-            }
-        });
+//        buttonSave.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                try{
+//                    String namaPelanggan = np.getText().toString();
+//                    String no_hp = ntlp.getText().toString();
+//                    String alamatPelanggan = alamat.getText().toString();
+//                    String berat = jmlbj.getText().toString();
+//                    int jumlah = Integer.parseInt(berat);
+//                    String pcs = jmlpd.getText().toString();
+//                    int jmlPakaianDalam = Integer.parseInt(pcs);
+//                    String jumlahSel = jmlsel.getText().toString();
+//                    int pcsSelimut = Integer.parseInt(jumlahSel);
+//                    String jumlahBS = jmlbs.getText().toString();
+//                    int pcsBS = Integer.parseInt(jumlahBS);
+//                    String hargaTotal = txtHasil.getText().toString();
+//                    int hasTot = Integer.parseInt(hargaTotal);
+//
+//                    if(namaPelanggan != null && namaPelanggan != ""){
+//                        Intent intent = new Intent(DataCuciMasuk.this, cobaTampil.class);
+//                        intent.putExtra(namaP, namaPelanggan);
+//                        startActivity(intent);
+//                    } else if (no_hp != null && no_hp != ""){
+//                        Intent intent = new Intent(DataCuciMasuk.this, cobaTampil.class);
+//                        intent.putExtra(nohp, no_hp);
+//                        startActivity(intent);
+//                    } else if (alamatPelanggan != null && alamatPelanggan != ""){
+//                        Intent intent = new Intent(DataCuciMasuk.this, cobaTampil.class);
+//                        intent.putExtra(almt, alamatPelanggan);
+//                        startActivity(intent);
+//                    } else {
+//                        Toast.makeText(getApplication(), "YOU NEED TO FILL YOUR NAME",Toast.LENGTH_SHORT);
+//                    }
+//
+//                } catch (Exception e){
+//                    e.printStackTrace();
+//                    Toast.makeText(getApplication(), "Error, Try Again!" , Toast.LENGTH_SHORT);
+//                }
+//
+//            }
+//        });
         btDatePicker.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

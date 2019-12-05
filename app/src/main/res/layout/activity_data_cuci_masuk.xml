@@ -10,6 +10,7 @@
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="match_parent"
+        android:background="@color/logo_launcher_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,6 +22,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/judul"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="52dp"
+                android:fontFamily="monospace"
+                android:text="FORM DATA CUCI MASUK"
+                android:textAlignment="center"
+                android:textColor="@android:color/black"
+                android:textSize="24sp" />
 
             <TextView
                 android:id="@+id/nama_pelanggan"
@@ -55,6 +67,22 @@
                 android:numeric="integer" />
 
             <TextView
+                android:id="@+id/alamat_pelanggan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Alamat Pelanggan"
+                android:textColor="@android:color/black" />
+
+            <EditText
+                android:id="@+id/input_alamat"
+                android:layout_width="335dp"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:hint="Masukan Alamat Pelanggan"
+                android:inputType="text" />
+
+            <TextView
                 android:id="@+id/tgl_masuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -63,10 +91,10 @@
                 android:textColor="@android:color/black" />
 
             <Button
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:id="@+id/bt_datepicker"
-              android:text="Pilih Tanggal"/>
+                android:id="@+id/bt_datepicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pilih Tanggal" />
 
             <TextView
                 android:id="@+id/tgl_keluar"
@@ -76,13 +104,14 @@
                 android:layout_marginEnd="16dp"
                 android:text="Tanggal Keluar Laundry : "
                 android:textColor="@android:color/black" />
+
             <Button
+                android:id="@+id/bt_datepickers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/bt_datepickers"
-                android:text="Pilih Tanggal"/>
+                android:text="Pilih Tanggal" />
 
-             <ImageView
+            <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="58dp"
                 android:layout_height="65dp"
@@ -104,24 +133,27 @@
                 android:layout_marginTop="8dp"
                 android:text="Kilat (1 hari) : Rp.5000/kg"
                 android:textColor="@android:color/black" />
+
             <RadioGroup
+                android:id="@+id/radioGroupNb"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/radioGroupNb">
+                android:layout_height="wrap_content">
 
                 <RadioButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
                     android:id="@+id/radioBiasa"
-                    android:checked="true"
-                    android:text="Biasa"/>
-                <RadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/radioKilat"
                     android:checked="true"
-                    android:text="Kilat"/>
+                    android:text="Biasa" />
+
+                <RadioButton
+                    android:id="@+id/radioKilat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Kilat" />
             </RadioGroup>
+
             <TextView
                 android:id="@+id/jumlahBerat"
                 android:layout_width="wrap_content"
@@ -151,7 +183,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Pakaian Dalam : Rp.500/pcs"
+                android:text="Pakaian Dalam Lebih dari 3 : Rp.500/pcs"
                 android:textColor="@android:color/black" />
 
             <TextView
@@ -245,11 +277,12 @@
 
             <TextView
                 android:id="@+id/totHarga"
-                android:layout_width="206dp"
-                android:layout_height="34dp"
+                android:layout_width="205dp"
+                android:layout_height="37dp"
                 android:layout_marginTop="4dp"
-                android:textStyle="bold"
-                android:hint="Rp." />
+                android:hint="Rp."
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <Button
                 android:id="@+id/buttonHitung"
