@@ -19,7 +19,7 @@ public class Header extends Koneksi {
         }
         return response;
     }
-    public String insertHeader(int idpelanggan, Date tanggal_masuk, Date tanggalambil, int iduser) {
+    public String insertHeader(String idpelanggan, String tanggal_masuk, String tanggalambil, String iduser) {
         try {
             url = URL + "?operasi=insertHeader&idpelanggan=" + idpelanggan + "&tanggal_masuk=" + tanggal_masuk + "&tanggalambil=" + tanggalambil + "&iduser=" + iduser;
             System.out.println("URL Insert Header : " + url);

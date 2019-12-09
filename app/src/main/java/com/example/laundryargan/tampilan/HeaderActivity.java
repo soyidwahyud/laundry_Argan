@@ -53,26 +53,20 @@ public class HeaderActivity extends AppCompatActivity implements View.OnClickLis
         TextView viewHeadertanggalambil = new TextView(this);
         TextView viewHeadernama = new TextView(this);
         TextView viewHeadernama_pelanggan = new TextView(this);
-        TextView viewHeaderalamat = new TextView(this);
-        TextView viewHeadernotelp = new TextView(this);
         TextView viewHeaderAction = new TextView(this);
 
-        viewHeaderidtransaksi.setText("ID Transaksi");
+        viewHeaderidtransaksi.setText("ID");
         viewHeadertanggal_masuk.setText("Tanggal Masuk");
         viewHeadertanggalambil.setText("Tanggal Ambil");
-        viewHeadernama.setText("Nama Karyawan");
-        viewHeadernama_pelanggan.setText("Nama Pelanggan");
-        viewHeaderalamat.setText("Alamat");
-        viewHeadernotelp.setText("Nomor Telfon");
+        viewHeadernama.setText("Id Pelanggan");
+        viewHeadernama_pelanggan.setText("Id User");
         viewHeaderAction.setText("Action");
 
-        viewHeaderidtransaksi.setPadding(5, 1, 6, 1);
+        viewHeaderidtransaksi.setPadding(5, 1, 3, 1);
         viewHeadertanggal_masuk.setPadding(5, 1, 6, 1);
         viewHeadertanggalambil.setPadding(5, 1, 6, 1);
         viewHeadernama.setPadding(5, 1, 6, 1);
         viewHeadernama_pelanggan.setPadding(5, 1, 6, 1);
-        viewHeaderalamat.setPadding(5, 1, 6, 1);
-        viewHeadernotelp.setPadding(5, 1, 6, 1);
         viewHeaderAction.setPadding(5, 1, 6, 1);
 
 
@@ -81,8 +75,6 @@ public class HeaderActivity extends AppCompatActivity implements View.OnClickLis
         barisTabel.addView(viewHeadertanggalambil);
         barisTabel.addView(viewHeadernama);
         barisTabel.addView(viewHeadernama_pelanggan);
-        barisTabel.addView(viewHeaderalamat);
-        barisTabel.addView(viewHeadernotelp);
         barisTabel.addView(viewHeaderAction);
 
         // Menyusun ukuran dari tabel
@@ -96,18 +88,14 @@ public class HeaderActivity extends AppCompatActivity implements View.OnClickLis
                 String idtransaksi = jsonChildNode.optString("idtransaksi");
                 String tanggal_masuk = jsonChildNode.optString("tanggal_masuk");
                 String tanggalambil = jsonChildNode.optString("tanggalambil");
-                String nama = jsonChildNode.optString("nama");
-                String nama_pelanggan = jsonChildNode.optString("nama_pelanggan");
-                String alamat = jsonChildNode.optString("alamat");
-                String notelp = jsonChildNode.optString("notelp");
+                String nama = jsonChildNode.optString("idpelanggan");
+                String nama_pelanggan = jsonChildNode.optString("iduser");
 
                 System.out.println("ID Transaksi      : " + idtransaksi);
                 System.out.println("Tanggal Masuk     : " + tanggal_masuk);
                 System.out.println("Tanggal Ambil     : " + tanggalambil);
                 System.out.println("Nama Karyawan     : " + nama);
                 System.out.println("Nama Pelanggan    : " + nama_pelanggan);
-                System.out.println("Alamat            : " + alamat);
-                System.out.println("Nomor Telfon      : " + notelp);
 
                 barisTabel = new TableRow(this);
 
@@ -118,7 +106,7 @@ public class HeaderActivity extends AppCompatActivity implements View.OnClickLis
 
                 TextView viewId = new TextView(this);
                 viewId.setText(idtransaksi);
-                viewId.setPadding(5, 1, 6, 1);
+                viewId.setPadding(5, 1, 3, 1);
                 barisTabel.addView(viewId);
 
                 TextView viewtanggal_masuk = new TextView(this);
@@ -141,15 +129,6 @@ public class HeaderActivity extends AppCompatActivity implements View.OnClickLis
                 viewNama_pel.setPadding(5, 1, 6, 1);
                 barisTabel.addView(viewNama_pel);
 
-                TextView viewAlamat = new TextView(this);
-                viewAlamat.setText(alamat);
-                viewAlamat.setPadding(5, 1, 6, 1);
-                barisTabel.addView(viewAlamat);
-
-                TextView viewNotelp = new TextView(this);
-                viewNotelp.setText(notelp);
-                viewNotelp.setPadding(5, 1, 6, 1);
-                barisTabel.addView(viewNotelp);
 
 
                 // Menambahkan button Edit

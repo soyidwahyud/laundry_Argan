@@ -113,6 +113,41 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"/>
 
+            <EditText
+                android:id="@+id/getidpel"
+                android:layout_width="335dp"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:clickable="false"
+                android:editable="false"
+                android:hint="Id Pelanggan"
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/get_namapelanggan"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="pilih Nama pelanggan" />
+
+            <TextView
+                android:id="@+id/namapelanggan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/get_idpelanggan"
+                android:layout_alignLeft="@+id/button1"
+                android:layout_alignRight="@+id/button1"
+                android:layout_marginTop="16dp"
+                android:text="Data Nama Pelanggan"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/spinner_nama_pelanggan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pelanggan"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"/>
+
             <Button
                 android:id="@+id/get_iduser"
                 android:layout_width="170dp"
@@ -138,12 +173,54 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"/>
 
+            <EditText
+                android:id="@+id/getiduser"
+                android:layout_width="335dp"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:clickable="false"
+                android:hint="Id User "
+                android:inputType="text" />
+
+            <Button
+                android:id="@+id/get_namauser"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="pilih Nama User" />
+
+            <TextView
+                android:id="@+id/namauser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/get_idpelanggan"
+                android:layout_alignLeft="@+id/button1"
+                android:layout_alignRight="@+id/button1"
+                android:layout_marginTop="16dp"
+                android:text="Data Nama User"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/spinner_nama_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pelanggan"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"/>
+
             <TextView
                 android:id="@+id/tgl_masuk"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="Tanggal Masuk Laundry : "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tgl_masuk2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text=""
                 android:textColor="@android:color/black" />
 
             <Button
@@ -159,6 +236,15 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:text="Tanggal Keluar Laundry : "
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/tgl_keluar2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text=""
                 android:textColor="@android:color/black" />
 
             <Button
@@ -197,6 +283,15 @@
                 android:layout_below="@+id/transaksi"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentRight="true"/>
+
+            <EditText
+                android:id="@+id/getidTransaksi"
+                android:layout_width="335dp"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:clickable="false"
+                android:hint="Id Transaksi "
+                android:inputType="text" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -354,6 +449,46 @@
                 android:hint="pcs"
                 android:numeric="integer" />
 
+            <Button
+                android:id="@+id/save3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Go" />
+
+            <Button
+                android:id="@+id/get_idbarang"
+                android:layout_width="170dp"
+                android:layout_height="wrap_content"
+                android:text="pilih id Barang" />
+
+            <TextView
+                android:id="@+id/idbarang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/get_idtransaksi"
+                android:layout_alignLeft="@+id/get_idtransaksi"
+                android:layout_alignRight="@+id/get_idtransaksi"
+                android:layout_marginTop="16dp"
+                android:text="Data Id Barang"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <Spinner
+                android:id="@+id/spinner_id_barang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/transaksi"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"/>
+
+            <EditText
+                android:id="@+id/getidBarang"
+                android:layout_width="335dp"
+                android:layout_height="55dp"
+                android:ems="10"
+                android:clickable="false"
+                android:hint="Id Barang "
+                android:inputType="text" />
+
             <TextView
                 android:id="@+id/textView18"
                 android:layout_width="wrap_content"
@@ -367,7 +502,7 @@
                 android:layout_width="205dp"
                 android:layout_height="37dp"
                 android:layout_marginTop="4dp"
-                android:hint="Rp."
+                android:hint=""
                 android:textColor="@android:color/black"
                 android:textStyle="bold" />
 

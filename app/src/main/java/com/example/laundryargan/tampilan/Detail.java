@@ -17,9 +17,9 @@ public class Detail extends Koneksi {
         }
         return response;
     }
-    public String insertDetail(int idbarang, int jumlah, float beratbaju, int pdalam, int idtransaksi, int harga) {
+    public String insertDetail(String idbarang, String beratbaju, String pdalam, String idtransaksi, String harga) {
         try {
-            url = URL + "?operasi=insertDetail&idbarang=" + idbarang + "&jumlah=" + jumlah + "&beratbaju=" + beratbaju + "&pdalam=" + pdalam+ "&idtransaksi=" + idtransaksi+ "&harga=" + harga;
+            url = URL + "?operasi=insertDetail&idbarang=" + idbarang + "&beratbaju=" + beratbaju + "&pdalam=" + pdalam+ "&idtransaksi=" + idtransaksi+ "&total=" + harga;
             System.out.println("URL Insert Detail : " + url);
             response = call(url);
         }
