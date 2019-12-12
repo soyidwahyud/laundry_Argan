@@ -63,17 +63,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         TextView viewHeaderAction = new TextView(this);
 
         viewHeaderiddetail.setText("ID");
-        viewHeadernama.setText("Nama Karyawan");
-        viewHeadertanggal_masuk.setText("Tanggal Masuk");
-        viewHeadertanggalambil.setText("Tanggal Ambil");
-        viewHeadernama_pelanggan.setText("Nama Pelanggan");
-        viewHeaderalamat.setText("Alamat");
-        viewHeadernotelp.setText("Nomor Telfon");
-        viewHeadernamabarang.setText("Nama Barang");
-        viewHeaderjumlah.setText("Jumlah");
-        viewHeaderberatbaju.setText("Berat Baju");
-        viewHeaderpdalam.setText("Pakaian Dalam");
-        viewHeadertotal.setText("Total");
+        viewHeadernama.setText("Id Barang");
+        viewHeadertanggal_masuk.setText("berat baju");
+        viewHeadertanggalambil.setText("Pakaian Dalam");
+        viewHeadernama_pelanggan.setText("id Transaksi");
+        viewHeaderalamat.setText("Total");
         viewHeaderAction.setText("Action");
 
         viewHeaderiddetail.setPadding(5, 1, 6, 1);
@@ -82,12 +76,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         viewHeadertanggalambil.setPadding(5, 1, 6, 1);
         viewHeadernama_pelanggan.setPadding(5, 1, 6, 1);
         viewHeaderalamat.setPadding(5, 1, 6, 1);
-        viewHeadernotelp.setPadding(5, 1, 6, 1);
-        viewHeadernamabarang.setPadding(5, 1, 6, 1);
-        viewHeaderjumlah.setPadding(5, 1, 6, 1);
-        viewHeaderberatbaju.setPadding(5, 1, 6, 1);
-        viewHeaderpdalam.setPadding(5, 1, 6, 1);
-        viewHeadertotal.setPadding(5, 1, 6, 1);
         viewHeaderAction.setPadding(5, 1, 6, 1);
 
         barisTabel.addView(viewHeaderiddetail);
@@ -96,12 +84,6 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
         barisTabel.addView(viewHeadertanggalambil);
         barisTabel.addView(viewHeadernama_pelanggan);
         barisTabel.addView(viewHeaderalamat);
-        barisTabel.addView(viewHeadernotelp);
-        barisTabel.addView(viewHeadernamabarang);
-        barisTabel.addView(viewHeaderjumlah);
-        barisTabel.addView(viewHeaderberatbaju);
-        barisTabel.addView(viewHeaderpdalam);
-        barisTabel.addView(viewHeadertotal);
         barisTabel.addView(viewHeaderAction);
 
         // Menyusun ukuran dari tabel
@@ -113,29 +95,17 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
             for (int i = 0; i < arrayDetail.length(); i++) {
                 JSONObject jsonChildNode = arrayDetail.getJSONObject(i);
                 String iddetail = jsonChildNode.optString("iddetail");
-                String nama = jsonChildNode.optString("nama");
-                String tanggal_masuk = jsonChildNode.optString("tanggal_masuk");
-                String tanggalambil = jsonChildNode.optString("tanggalambil");
-                String nama_pelanggan = jsonChildNode.optString("nama_pelanggan");
-                String alamat = jsonChildNode.optString("alamat");
-                String notelp = jsonChildNode.optString("notelp");
-                String namabarang = jsonChildNode.optString("namabarang");
-                String jumlah = jsonChildNode.optString("jumlah");
+                String idbarang = jsonChildNode.optString("idbarang");
                 String beratbaju = jsonChildNode.optString("beratbaju");
                 String pdalam = jsonChildNode.optString("pdalam");
+                String idtransaksi = jsonChildNode.optString("idtransaksi");
                 String total = jsonChildNode.optString("total");
 
                 System.out.println("ID Transaksi      : " + iddetail);
-                System.out.println("Tanggal Masuk     : " + tanggal_masuk);
-                System.out.println("Tanggal Ambil     : " + tanggalambil);
-                System.out.println("Nama Karyawan     : " + nama);
-                System.out.println("Nama Pelanggan    : " + nama_pelanggan);
-                System.out.println("Alamat            : " + alamat);
-                System.out.println("Nomor Telfon      : " + notelp);
-                System.out.println("Nama Barang       : " + namabarang);
-                System.out.println("jumlah            : " + jumlah);
+                System.out.println("ID Barang         : " + idbarang);
                 System.out.println("beratbaju         : " + beratbaju);
                 System.out.println("pdalam            : " + pdalam);
+                System.out.println("idtransaksi       : " + idtransaksi);
                 System.out.println("total             : " + total);
 
                 barisTabel = new TableRow(this);
@@ -151,45 +121,10 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 barisTabel.addView(viewId);
 
                 TextView viewNama = new TextView(this);
-                viewNama.setText(nama);
+                viewNama.setText(idtransaksi);
                 viewNama.setPadding(5, 1, 6, 1);
                 barisTabel.addView(viewNama);
 
-                TextView viewtanggal_masuk = new TextView(this);
-                viewtanggal_masuk.setText(tanggal_masuk);
-                viewtanggal_masuk.setPadding(5, 1, 6, 1);
-                barisTabel.addView(viewtanggal_masuk);
-
-                TextView viewtanggalambil = new TextView(this);
-                viewtanggalambil.setText(tanggalambil);
-                viewtanggalambil.setPadding(5, 1, 6, 1);
-                barisTabel.addView(viewtanggalambil);
-
-
-                TextView viewNama_pel = new TextView(this);
-                viewNama_pel.setText(nama_pelanggan);
-                viewNama_pel.setPadding(5, 1, 6, 1);
-                barisTabel.addView(viewNama_pel);
-
-                TextView viewAlamat = new TextView(this);
-                viewAlamat.setText(alamat);
-                viewAlamat.setPadding(5, 1, 6, 1);
-                barisTabel.addView(viewAlamat);
-
-                TextView viewNotelp = new TextView(this);
-                viewNotelp.setText(notelp);
-                viewNotelp.setPadding(5, 1, 6, 1);
-                barisTabel.addView(viewNotelp);
-
-                TextView viewNamabarang = new TextView(this);
-                viewNamabarang.setText(namabarang);
-                viewNamabarang.setPadding(5, 1, 6, 1);
-                barisTabel.addView(viewNamabarang);
-
-                TextView viewjumlah = new TextView(this);
-                viewjumlah.setText(jumlah);
-                viewjumlah.setPadding(5, 1, 6, 1);
-                barisTabel.addView(viewjumlah);
 
                 TextView viewberatbaju = new TextView(this);
                 viewberatbaju.setText(beratbaju);
@@ -200,6 +135,11 @@ public class DetailActivity extends AppCompatActivity implements View.OnClickLis
                 viewpdalam.setText(pdalam);
                 viewpdalam.setPadding(5, 1, 6, 1);
                 barisTabel.addView(viewpdalam);
+
+                TextView viewpdalam2 = new TextView(this);
+                viewpdalam2.setText(idtransaksi);
+                viewpdalam2.setPadding(5, 1, 6, 1);
+                barisTabel.addView(viewpdalam2);
 
                 TextView viewtotal = new TextView(this);
                 viewtotal.setText(total);
